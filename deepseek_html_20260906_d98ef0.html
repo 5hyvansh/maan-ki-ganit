@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mann Ki Ganit · Maths & Accounts on YouTube</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f8f9ff 0%, #eef2f7 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: 48px 48px 40px 40px;
+      box-shadow: 0 20px 40px rgba(0, 20, 40, 0.12), 0 8px 20px rgba(0, 0, 0, 0.05);
+      padding: 2.5rem 2rem;
+      transition: all 0.25s ease;
+    }
+
+    /* header / teacher intro */
+    .teacher-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      background: white;
+      padding: 1.8rem 2.2rem;
+      border-radius: 40px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 30px;
+      flex-shrink: 0;
+      overflow: hidden;
+      box-shadow: 0 8px 18px rgba(30, 50, 100, 0.2);
+      border: 3px solid white;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .teacher-info h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #0b1a3a;
+      letter-spacing: -0.5px;
+    }
+
+    .teacher-info .badge {
+      background: #eef6ff;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      display: inline-block;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #1f3a7a;
+      margin-top: 0.3rem;
+      border: 1px solid #d3e2fc;
+    }
+
+    .teacher-info p {
+      color: #2a3f6e;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .teacher-info p i {
+      color: #ff0000;
+      font-size: 1.4rem;
+    }
+
+    .youtube-btn {
+      margin-left: auto;
+      background: #ff0000;
+      color: white;
+      padding: 0.8rem 1.8rem;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.2s;
+      box-shadow: 0 6px 14px rgba(255, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+    }
+
+    .youtube-btn:hover {
+      background: #cc0000;
+      transform: scale(1.02);
+      box-shadow: 0 10px 20px rgba(255, 0, 0, 0.35);
+    }
+
+    /* class cards */
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 650;
+      color: #0e1e3e;
+      margin: 2.2rem 0 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-title i {
+      color: #3b5ba5;
+      font-size: 2rem;
+    }
+
+    .class-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .class-card {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem 1.5rem 2rem;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.03), 0 4px 12px rgba(0, 20, 40, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(2px);
+    }
+
+    .class-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 40px rgba(30, 50, 100, 0.08);
+      border-color: #cbd9f0;
+    }
+
+    .class-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(145deg, #1f2b5e, #2c3f7a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .class-card h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0e1e3e;
+      letter-spacing: -0.3px;
+      margin: 0.2rem 0 0.25rem;
+    }
+
+    .class-card .sub {
+      color: #4460a0;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border-bottom: 1px solid #e6edf8;
+      padding-bottom: 0.8rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .class-card .topics {
+      list-style: none;
+      margin: 0.8rem 0 1.2rem;
+      flex: 1;
+    }
+
+    .class-card .topics li {
+      padding: 0.35rem 0;
+      color: #1f3360;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.98rem;
+      border-bottom: 1px dashed #eef2f9;
+    }
+
+    .class-card .topics li i {
+      color: #3b5ba5;
+      width: 18px;
+      font-size: 0.9rem;
+    }
+
+    .class-card .yt-link {
+      background: #f0f4ff;
+      border-radius: 50px;
+      padding: 0.6rem 1.2rem;
+      text-align: center;
+      font-weight: 600;
+      color: #1f3a7a;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: 0.2s;
+      border: 1px solid transparent;
+      margin-top: 0.5rem;
+      cursor: pointer;
+    }
+
+    .class-card .yt-link i {
+      color: #ff0000;
+    }
+
+    .class-card .yt-link:hover {
+      background: #ffffff;
+      border-color: #b4c9ec;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    }
+
+    /* extra section: why join + schedule */
+    .info-highlight {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2.8rem 0 1rem;
+      background: #eef4fe;
+      border-radius: 40px;
+      padding: 2rem 2.2rem;
+      align-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .info-highlight .feature {
+      flex: 1 1 160px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .info-highlight .feature i {
+      font-size: 2.2rem;
+      color: #1f3a7a;
+      background: white;
+      padding: 12px;
+      border-radius: 30px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+    }
+
+    .info-highlight .feature span {
+      font-weight: 500;
+      color: #102344;
+    }
+
+    .info-highlight .feature strong {
+      font-weight: 700;
+      color: #0a1a3a;
+    }
+
+    /* footer */
+    .footer-note {
+      text-align: center;
+      margin-top: 2.8rem;
+      color: #3b5785;
+      font-weight: 450;
+      border-top: 1px solid rgba(60, 90, 140, 0.12);
+      padding-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem 2.5rem;
+    }
+
+    .footer-note a {
+      color: #1f3a7a;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .footer-note a:hover {
+      text-decoration: underline;
+      color: #0b1a3a;
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #1f2b5e;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 60px;
+      font-weight: 500;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: all 0.4s ease;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 700px) {
+      .container { padding: 1.5rem 1.2rem; }
+      .teacher-header { flex-direction: column; align-items: start; gap: 1rem; }
+      .youtube-btn { margin-left: 0; width: 100%; justify-content: center; }
+      .class-grid { gap: 1.5rem; }
+      .info-highlight { flex-direction: column; align-items: start; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">✨ Feature coming soon!</div>
+
+  <!-- teacher header -->
+  <div class="teacher-header">
+    <div class="avatar">
+      <img src="https://yt3.googleusercontent.com/JqImnroa2Xm9oXsnUKtDZDNQUXlU2YsM8c9Gio2o5jE2vqJ-oynM-CB9911m54AYD6-Mzy-naw=s900-c-k-c0x00ffffff-no-rj" alt="Mann Ki Ganit Logo - Maths Algebra Geometry">
+    </div>
+    <div class="teacher-info">
+      <h1>Mann Ki Ganit</h1>
+      <div class="badge"><i class="fas fa-users" style="margin-right: 6px;"></i> 575K Subscribers · CBSE & State</div>
+      <p>
+        <i class="fab fa-youtube"></i> 
+        <span>Class 6–11 Maths & 11–B.Com Accounts</span>
+        <span style="background: #dce6f5; padding: 0.15rem 1rem; border-radius: 30px; font-size: 0.9rem; margin-left: 0.2rem;">
+          <i class="fas fa-clock" style="color: #1f3a7a;"></i> Full Course in 2 Years
+        </span>
+      </p>
+      <p style="font-size: 0.9rem; color: #4460a0; font-style: italic; margin-top: 0.2rem;">
+        <i class="fas fa-quote-left" style="font-size: 0.8rem;"></i> Soch Ko Do Ganit Ki Shakti
+      </p>
+    </div>
+    <button onclick="window.open('https://www.youtube.com/@MannKiGanit','_blank')" class="youtube-btn">
+      <i class="fab fa-youtube" style="font-size: 1.3rem;"></i> Visit YouTube
+    </button>
+  </div>
+
+  <!-- class cards: 8,9,10 (Maths focus) and Accounts for 11/B.Com -->
+  <div class="section-title">
+    <i class="fas fa-graduation-cap"></i> 
+    <span>Classes · Maths (6–11) & Accounts (11–B.Com)</span>
+  </div>
+
+  <div class="class-grid">
+    <!-- Class 8 & 9 Maths -->
+    <div class="class-card">
+      <div class="class-number">8-9</div>
+      <h3>Maths Foundation</h3>
+      <div class="sub"><i class="fas fa-book-open"></i> Number Systems, Algebra, Geometry</div>
+      <ul class="topics">
+        <li><i class="fas fa-square-root-alt"></i> Rational Numbers, Linear Equations</li>
+        <li><i class="fas fa-shapes"></i> Mensuration, Data Handling</li>
+        <li><i class="fas fa-calculator"></i> Polynomials, Coordinate Geometry</li>
+        <li><i class="fas fa-chart-line"></i> Statistics, Probability Basics</li>
+      </ul>
+      <button onclick="window.open('https://www.youtube.com/@MannKiGanit/search?query=class%208%20maths','_blank')" class="yt-link">
+        <i class="fab fa-youtube"></i> Watch Playlist
+      </button>
+    </div>
+
+    <!-- Class 10 Maths -->
+    <div class="class-card">
+      <div class="class-number">10</div>
+      <h3>Board Prep Maths</h3>
+      <div class="sub"><i class="fas fa-star"></i> Real Numbers, Trigonometry, Statistics</div>
+      <ul class="topics">
+        <li><i class="fas fa-function"></i> Linear Equations, Quadratic Equations</li>
+        <li><i class="fas fa-chart-pie"></i> Statistics, Probability (PYQs)</li>
+        <li><i class="fas fa-angle-double-right"></i> Trigonometry, Coordinate Geometry</li>
+        <li><i class="fas fa-circle"></i> Circles, Constructions</li>
+      </ul>
+      <button onclick="window.open('https://www.youtube.com/@MannKiGanit/search?query=class%2010%20maths','_blank')" class="yt-link">
+        <i class="fab fa-youtube"></i> Watch Playlist
+      </button>
+    </div>
+
+    <!-- Class 11 & B.Com Accounts -->
+    <div class="class-card">
+      <div class="class-number">11+</div>
+      <h3>Accounts</h3>
+      <div class="sub"><i class="fas fa-file-invoice"></i> Class 11 & B.Com</div>
+      <ul class="topics">
+        <li><i class="fas fa-file-invoice-dollar"></i> Journal, Ledger, Trial Balance</li>
+        <li><i class="fas fa-balance-scale"></i> Final Accounts, Depreciation</li>
+        <li><i class="fas fa-hand-holding-usd"></i> Company Accounts, Ratio Analysis</li>
+        <li><i class="fas fa-chart-simple"></i> Partnership, GST Basics</li>
+      </ul>
+      <button onclick="window.open('https://www.youtube.com/@MannKiGanit/search?query=accounts','_blank')" class="yt-link">
+        <i class="fab fa-youtube"></i> Watch Playlist
+      </button>
+    </div>
+  </div>
+
+  <!-- extra info: schedule and highlights -->
+  <div class="info-highlight">
+    <div class="feature">
+      <i class="fas fa-clock"></i>
+      <span><strong>Complete Course</strong> Uploaded within 2 Years</span>
+    </div>
+    <div class="feature">
+      <i class="fas fa-video"></i>
+      <span><strong>YouTube</strong> 100% free · All videos available</span>
+    </div>
+    <div class="feature">
+      <i class="fas fa-file-alt"></i>
+      <span><strong>Notes + PDF</strong> in video description</span>
+    </div>
+    <div class="feature">
+      <i class="fas fa-comment-dots"></i>
+      <span><strong>Live Doubt</strong> Sessions</span>
+    </div>
+  </div>
+
+  <!-- footer / extra links -->
+  <div class="footer-note">
+    <span><i class="fas fa-chalkboard"></i> Maths (6–11) & Accounts (11–B.Com)</span>
+    <a href="https://www.youtube.com/@MannKiGanit" target="_blank"><i class="fab fa-youtube"></i> YouTube Channel</a>
+    <a onclick="showToast('📧 Email: contact@mannkiganit.in')" style="cursor:pointer;"><i class="fas fa-envelope"></i> Email Us</a>
+    <a onclick="showToast('📅 Full Syllabus available on YouTube channel!')" style="cursor:pointer;"><i class="fas fa-calendar-alt"></i> Full Syllabus</a>
+    <span style="opacity: 0.7;">© 2026 · Mann Ki Ganit</span>
+  </div>
+
+</div>
+<!-- end container -->
+
+<script>
+  // Toast notification function
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message || '✨ Feature coming soon!';
+    toast.classList.add('show');
+    clearTimeout(toast.timeout);
+    toast.timeout = setTimeout(() => {
+      toast.classList.remove('show');
+    }, 3000);
+  }
+
+  // All interactive elements with their functions
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    // 1. Main YouTube button (already handled inline)
+    
+    // 2. All "Watch Playlist" buttons (already handled inline)
+    
+    // 3. Footer YouTube link (already handled inline)
+    
+    // 4. Footer Email link (handled inline with showToast)
+    
+    // 5. Footer Syllabus link (handled inline with showToast)
+    
+    // 6. Additional: Click on class cards can show info
+    const cards = document.querySelectorAll('.class-card');
+    cards.forEach((card, index) => {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', function(e) {
+        // Don't trigger if clicking on the button inside
+        if (e.target.closest('.yt-link')) return;
+        const title = this.querySelector('h3')?.textContent || 'Class';
+        showToast(`📚 ${title} - Check YouTube for full playlist!`);
+      });
+    });
+
+    // 7. Feature items click feedback
+    const features = document.querySelectorAll('.feature');
+    features.forEach(feature => {
+      feature.style.cursor = 'pointer';
+      feature.addEventListener('click', function() {
+        const text = this.querySelector('span')?.textContent || 'Feature';
+        showToast(`✅ ${text.trim()}`);
+      });
+    });
+
+    // 8. Click on "575K Subscribers" badge shows info
+    const badge = document.querySelector('.badge');
+    if (badge) {
+      badge.style.cursor = 'pointer';
+      badge.addEventListener('click', function() {
+        showToast('🎯 Mann Ki Ganit - 575K+ subscribers growing!');
+      });
+    }
+
+    // 9. Keyboard shortcut: Press 'Y' to go to YouTube channel
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'y' || e.key === 'Y') {
+        if (!e.ctrlKey && !e.metaKey) {
+          window.open('https://www.youtube.com/@MannKiGanit', '_blank');
+        }
+      }
+    });
+
+    console.log('✅ All buttons are functional!');
+    console.log('🎯 Press "Y" key to go to YouTube channel');
+  });
+</script>
+
+</body>
+</html>
